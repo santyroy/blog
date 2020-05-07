@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+<h1>Welcome</h1>
+<div>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/register}">Register</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/newBlog}">Add New Blog</a>
+    </nav>
+</div>
+<div th:if="${data_blog}">
+    <table>
+        <thead>
+            <tr>
+                <td th:text="ID"></td>
+                <td th:text="Blog"></td>
+                <td th:text="Date"></td>
+                <td th:text="Blogger"></td>
+            </tr>
+        </thead>
+        <tbody th:each="blog : ${data_blog}">
+            <tr>
+                <td th:text="${blog.id}"></td>
+                <td th:text="${blog.message}"></td>
+                <td th:text="${blog.date}"></td>
+                <td th:text="${blog.blogUser?.username}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
